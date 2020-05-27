@@ -11,7 +11,8 @@ function BusinessLogin(props){
         onChange,
         onSubmit,
         disabled,
-        errors
+        errors,
+        onCheckBoxChange
       } = props
       return(
         <div>
@@ -65,7 +66,7 @@ function BusinessLogin(props){
             /></label>
             </div>
 
-          
+            
 
         </div>
         <div>

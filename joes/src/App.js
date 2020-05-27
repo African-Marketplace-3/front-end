@@ -16,14 +16,16 @@ const initialFormValues = {
   name:'',
   email: '',
   username:'',
-  password: ''
+  password: '',
+  termsOfService: false
 }
 
 const initialFormErrors = {
   name:'',
   email:'',
   username:'',
-  password:''
+  password:'',
+  termsOfService:''
 }
 
 const formSchema = yup.object().shape({
@@ -46,6 +48,9 @@ const formSchema = yup.object().shape({
     .string()
     .min(2, 'Password must have at least 5 characters')
     .required('Password is required!'),
+
+  
+
     })
 
 const initialFormDisabled = true;
@@ -90,11 +95,20 @@ function App() {
   const newUser = {
     name: formValues.name,
     email: formValues.email,
-    password: formValues.password
+    username: formValues.username,
+    password: formValues.password,
+    termsOfService: Object.keys(formValues.termsOfService)
+        .filter(termsOfService => formValues.termsOfService[termsOfService] ===true)
   }
 
   postUser(newUser)
   setFormValues(initialFormValues)
+  setUser([...user, newUser])
+
+  const userObjToString = JSON.stringify(newUser)
+  console.log(userObjToString)
+
+  const toJSONuser= JSON.parse(userObjToString);
   }
   
   const onInputChange = evt => {
@@ -124,16 +138,11 @@ function App() {
 
 
     const onCheckBoxChange = evt => {
-      const name = evt.target.name
       const checked = evt.target.checked
-      console.log(checked)
+      console.log(checked);
       setFormValues({
         ...formValues,
-        toppings: {
-          ...formValues.toppings,
-          [name]: checked
-        
-        }
+        termsOfService: checked
       })
     }
 
@@ -169,7 +178,7 @@ function App() {
           <SignUp
             values = {formValues}
             onInputChange = {onInputChange}
-            onChange = {onCheckBoxChange}
+            onCheckBoxChange = {onCheckBoxChange}
             onSubmit = {onSubmit}
             disabled = {formDisabled}
             errors ={formErrors}
@@ -181,7 +190,7 @@ function App() {
         <Login 
           values = {formValues}
           onInputChange = {onInputChange}
-          onChange = {onCheckBoxChange}
+          onCheckBoxChange = {onCheckBoxChange}
           onSubmit = {onSubmit}
           disabled = {formDisabled}
           errors ={formErrors}
@@ -192,7 +201,7 @@ function App() {
         <BusinessLogin 
           values = {formValues}
           onInputChange = {onInputChange}
-          onChange = {onCheckBoxChange}
+          onCheckBoxChange = {onCheckBoxChange}
           onSubmit = {onSubmit}
           disabled = {formDisabled}
           errors ={formErrors}
@@ -203,7 +212,7 @@ function App() {
         <BusinessSignUp 
           values = {formValues}
           onInputChange = {onInputChange}
-          onChange = {onCheckBoxChange}
+          onCheckboxChange = {onCheckBoxChange}
           onSubmit = {onSubmit}
           disabled = {formDisabled}
           errors ={formErrors}

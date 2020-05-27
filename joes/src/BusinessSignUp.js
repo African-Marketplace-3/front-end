@@ -10,7 +10,8 @@ function BusinessSignUp(props){
       onChange,
       onSubmit,
       disabled,
-      errors
+      errors,
+      onCheckBoxChange
     } = props
    
     return(
@@ -28,7 +29,7 @@ function BusinessSignUp(props){
             <div>
             {errors.name}
             {errors.email}
-            {errors.password}
+            {errors.password} 
             </div>
 
             
@@ -68,6 +69,15 @@ function BusinessSignUp(props){
           
 
         </div>
+        <label>
+            <input
+                name='termsOfService'
+                type="checkbox"
+                checked={values.termsOfService}
+                onChange={onCheckBoxChange}
+            />
+            Terms Of Service
+        </label>
         <div>
         <button className='submit' onClick={onSubmit} >Submit</button>
     </div>

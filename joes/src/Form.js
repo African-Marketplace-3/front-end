@@ -16,7 +16,8 @@ function SignUp(props){
       onChange,
       onSubmit,
       disabled,
-      errors
+      errors,
+      onCheckBoxChange
     } = props
    
     return(
@@ -71,7 +72,15 @@ function SignUp(props){
             /></label>
             </div>
 
-          
+            <label>
+            <input
+                name='termsOfService'
+                type="checkbox"
+                checked={values.termsOfService}
+                onChange={onCheckBoxChange}
+            />
+            Terms Of Service
+        </label>
 
         </div>
         <div>

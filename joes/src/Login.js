@@ -11,7 +11,8 @@ function Login(props){
         onChange,
         onSubmit,
         disabled,
-        errors
+        errors,
+        onCheckBoxChange
       } = props
       return(
         <div>
@@ -68,6 +69,7 @@ function Login(props){
           
 
         </div>
+       
         <div>
         <button className='submit' onClick={onSubmit} >Submit</button>
     </div>
