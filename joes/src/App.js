@@ -10,7 +10,7 @@ import BusinessLogin from './BusinessLogin';
 import BusinessSignUp from './BusinessSignUp';
 import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom';
 
-const url= 'https://reqres.in/api/users'
+const url= 'https://african-market-place.herokuapp.com/'
 
 const initialFormValues = {
   name:'',
@@ -48,9 +48,6 @@ const formSchema = yup.object().shape({
     .string()
     .min(2, 'Password must have at least 5 characters')
     .required('Password is required!'),
-
-  
-
     })
 
 const initialFormDisabled = true;
@@ -89,12 +86,34 @@ function App() {
   }, [formValues])
 
 
+
+
+  const getUser = () => {
+    axios.get(url)
+    .then(function(res) {
+      console.log(res);
+      setUser([...user, res.data])
+    })
+    .catch(function(err) {
+      console.log(err)
+    })
+  }
+
+  useEffect(() =>{
+    getUser()
+    }, [])
+
+
+
+
+
+
   const onSubmit = evt => {
     evt.preventDefault()
 
   const newUser = {
-    name: formValues.name,
-    email: formValues.email,
+    name: formValues.name.trim(),
+    email: formValues.email.trim(),
     username: formValues.username,
     password: formValues.password,
     termsOfService: Object.keys(formValues.termsOfService)
@@ -212,7 +231,7 @@ function App() {
         <BusinessSignUp 
           values = {formValues}
           onInputChange = {onInputChange}
-          onCheckboxChange = {onCheckBoxChange}
+          onCheckBoxChange = {onCheckBoxChange}
           onSubmit = {onSubmit}
           disabled = {formDisabled}
           errors ={formErrors}

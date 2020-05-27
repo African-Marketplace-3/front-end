@@ -13,7 +13,6 @@ function SignUp(props){
     const {
       values,
       onInputChange,
-      onChange,
       onSubmit,
       disabled,
       errors,

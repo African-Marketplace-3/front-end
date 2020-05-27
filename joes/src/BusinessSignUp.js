@@ -7,7 +7,6 @@ function BusinessSignUp(props){
     const {
       values,
       onInputChange,
-      onChange,
       onSubmit,
       disabled,
       errors,
