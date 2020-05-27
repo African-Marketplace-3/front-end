@@ -1,19 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import axios from 'axios';
 import * as yup from 'yup';
 
-
-
-function Login(props){
+function BusinessSignUp(props){
+  
     const {
-        values,
-        onInputChange,
-        onChange,
-        onSubmit,
-        disabled,
-        errors
-      } = props
-      return(
+      values,
+      onInputChange,
+      onChange,
+      onSubmit,
+      disabled,
+      errors
+    } = props
+   
+    return(
         <div>
              
 
@@ -21,7 +21,7 @@ function Login(props){
             <div>
                 
             <div>
-            <h2>Log In</h2>
+            <h2>Sign Up Your Business!</h2>
             </div>
 
             
@@ -33,7 +33,7 @@ function Login(props){
 
             
             <div>
-            <label htmlFor='name'>Name:&nbsp;
+            <label htmlFor='name'>Business Name:&nbsp;
             <input
                 id='name'
                 value = {values.name}
@@ -74,10 +74,10 @@ function Login(props){
     </form>
 
 
+    
         
         </div>
         
     )
-}
-
-export default Login;
+    }
+export default BusinessSignUp;

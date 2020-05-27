@@ -3,9 +3,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 
 
-function goBack() {
-    window.history.back();
-  };
+
   
 
 
@@ -82,7 +80,7 @@ function SignUp(props){
     </form>
 
 
-    <button onClick={goBack}>Back Home</button>
+    
         
         </div>
         

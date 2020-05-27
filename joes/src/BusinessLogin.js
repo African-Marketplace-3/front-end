@@ -4,7 +4,7 @@ import * as yup from 'yup';
 
 
 
-function Login(props){
+function BusinessLogin(props){
     const {
         values,
         onInputChange,
@@ -21,7 +21,7 @@ function Login(props){
             <div>
                 
             <div>
-            <h2>Log In</h2>
+            <h2>Business Log In</h2>
             </div>
 
             
@@ -33,7 +33,7 @@ function Login(props){
 
             
             <div>
-            <label htmlFor='name'>Name:&nbsp;
+            <label htmlFor='name'>Business Name:&nbsp;
             <input
                 id='name'
                 value = {values.name}
@@ -80,4 +80,4 @@ function Login(props){
     )
 }
 
-export default Login;
+export default BusinessLogin;
