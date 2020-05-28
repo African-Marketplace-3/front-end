@@ -9,7 +9,7 @@ const url= 'https://african-market-place.herokuapp.com/api/users'
 
 
 const initialLoginFormValues = {
-    name:'',
+   
     email: '',
     username:'',
     password: ''
@@ -17,7 +17,7 @@ const initialLoginFormValues = {
   }
   
   const initialLoginFormErrors = {
-    name:'',
+    
     email:'',
     username:'',
     password:''
@@ -116,8 +116,10 @@ function Login(props){
           const onSubmit = evt => {
             evt.preventDefault()
         
+            console.log('You have successfully logged')
+
           const newLoginUser = {
-            name: loginFormValues.name.trim(),
+            
             email: loginFormValues.email.trim(),
             username: loginFormValues.username,
             password: loginFormValues.password,
@@ -142,25 +144,14 @@ function Login(props){
                 </div>
 
                 <div>
-                    {loginFormErrors.name}
+                    
                     {loginFormErrors.email}
                     {loginFormErrors.username}
                     {loginFormErrors.password}
                 </div>
 
             
-                <div>
-                    <label htmlFor='name'>Name:&nbsp;
-                        <input
-                            id='name'
-                            loginFormValues = {loginFormValues.name}
-                            onChange = {onInputChange}
-                            name='name'
-                            type='text'
-                            placeholder='Type your name'
-                        />
-                    </label>
-                </div>
+                
 
                 <div>
                     <label htmlFor='email'>Email:&nbsp;

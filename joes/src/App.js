@@ -88,6 +88,8 @@ function App() {
   const onSubmit = evt => {
     evt.preventDefault()
 
+    console.log('Your form was successfully submitted!')
+
   const newUser = {
     name: formValues.name.trim(),
     email: formValues.email.trim(),
