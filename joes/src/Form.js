@@ -4,10 +4,6 @@ import * as yup from 'yup';
 
 
 
-  
-
-
-
 function SignUp(props){
   
     const {
@@ -46,6 +42,7 @@ function SignUp(props){
                 onChange = {onInputChange}
                 name='name'
                 type='text'
+                placeholder='Type your name'
             /></label>
             </div>
 
@@ -57,6 +54,7 @@ function SignUp(props){
                 onChange = {onInputChange}
                 name='email'
                 type='text'
+                placeholder='Type your email'
             /></label>
             </div>
 
@@ -67,7 +65,8 @@ function SignUp(props){
                 value = {values.password}
                 onChange = {onInputChange}
                 name='password'
-                type='text'
+                type='password'
+                placeholder='Type your password'
             /></label>
             </div>
 
@@ -83,7 +82,7 @@ function SignUp(props){
 
         </div>
         <div>
-        <button className='submit' onClick={onSubmit} >Submit</button>
+        <button onClick={onSubmit} disabled={disabled}>Submit</button>
     </div>
     </form>
 

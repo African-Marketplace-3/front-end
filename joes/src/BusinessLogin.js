@@ -41,6 +41,7 @@ function BusinessLogin(props){
                 onChange = {onInputChange}
                 name='name'
                 type='text'
+                placeholder='Type your business name'
             /></label>
             </div>
 
@@ -52,6 +53,7 @@ function BusinessLogin(props){
                 onChange = {onInputChange}
                 name='email'
                 type='text'
+                placeholder='Type your email'
             /></label>
             </div>
 
@@ -62,7 +64,8 @@ function BusinessLogin(props){
                 value = {values.password}
                 onChange = {onInputChange}
                 name='password'
-                type='text'
+                type='password'
+                placeholder='Type your password'
             /></label>
             </div>
 
@@ -70,7 +73,7 @@ function BusinessLogin(props){
 
         </div>
         <div>
-        <button className='submit' onClick={onSubmit} >Submit</button>
+        <button className='submit' onClick={onSubmit} disabled={disabled} >Submit</button>
     </div>
     </form>
 

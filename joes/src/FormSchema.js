@@ -1,0 +1,26 @@
+import React from 'react';
+import * as yup from 'yup';
+
+
+const formSchema = yup.object().shape({
+    name: yup
+      .string()
+      .min(2, 'Name must have at least 2 characters')
+      .required('Name is required!'),
+    
+    email: yup
+      .string()
+      .min(2, 'Email must have at least 7 characters')
+      .required('Email is required!'),
+  
+   
+  
+    password: yup
+      .string()
+      .min(2, 'Password must have at least 5 characters')
+      .required('Password is required!'),
+  
+   
+      })
+
+export default formSchema;

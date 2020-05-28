@@ -8,9 +8,10 @@ import Login from './Login';
 import Card from './UserCard';
 import BusinessLogin from './BusinessLogin';
 import BusinessSignUp from './BusinessSignUp';
+import formSchema from './FormSchema';
 import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom';
 
-const url= 'https://african-market-place.herokuapp.com/'
+const url= 'https://african-market-place.herokuapp.com/api/users'
 
 const initialFormValues = {
   name:'',
@@ -28,29 +29,13 @@ const initialFormErrors = {
   termsOfService:''
 }
 
-const formSchema = yup.object().shape({
-  name: yup
-    .string()
-    .min(2, 'Name must have at least 2 characters')
-    .required('Name is required!'),
-  
-  email: yup
-    .string()
-    .min(2, 'Email must have at least 7 characters')
-    .required('Email is required!'),
 
-  username: yup
-    .string()
-    .min(6, 'Username must have at least 6 characters')
-    .required('Username is required!'),
-
-  password: yup
-    .string()
-    .min(2, 'Password must have at least 5 characters')
-    .required('Password is required!'),
-    })
 
 const initialFormDisabled = true;
+
+
+
+
 
 
 function App() {
@@ -59,33 +44,6 @@ function App() {
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
   const [formDisabled, setFormDisabled] = useState(initialFormDisabled)
-
-  const postUser = aUser => {
-    axios.post(url, aUser)
-      .then(res => {
-        setUser([res.data, ...user])
-          console.log(res)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    .finally(() => {
-      setFormValues(initialFormValues)
-    })
-  } 
-
-  useEffect(() =>{
-  postUser()
-  }, [])
-
-  useEffect(() => {
-    formSchema.isValid(formValues)
-      .then(valid => { 
-        setFormDisabled(!valid)
-      })
-  }, [formValues])
-
-
 
 
   const getUser = () => {
@@ -105,6 +63,34 @@ function App() {
 
 
 
+  const postUser = aUser => {
+    axios.post(url, aUser)
+      .then(res => {
+        setUser([res.data, ...user])
+          console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    .finally(() => {
+      setFormValues(initialFormValues)
+    })
+  } 
+
+  useEffect(() =>{
+  postUser()
+  }, [])
+
+
+
+
+
+  useEffect(() => {
+    formSchema.isValid(formValues)
+      .then(valid => { 
+        setFormDisabled(!valid)
+      })
+  }, [formValues])
 
 
 
@@ -151,7 +137,7 @@ function App() {
       })
       setFormValues({
         ...formValues,
-        [name]:value,
+        [name]:value
       })
     }
 
