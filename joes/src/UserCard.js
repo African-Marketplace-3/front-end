@@ -11,7 +11,9 @@ function Card({details}){
 
             <h2>{details.name}</h2>
             <p>{details.email}</p>
+            <p>{details.username}</p>
             <p>{details.password}</p>
+            
            
         </div>
     )

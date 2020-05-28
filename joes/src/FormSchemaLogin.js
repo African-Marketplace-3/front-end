@@ -2,7 +2,7 @@ import React from 'react';
 import * as yup from 'yup';
 
 
-const formSchema = yup.object().shape({
+const formSchemaLogin = yup.object().shape({
     name: yup
       .string()
       .min(2, 'Name must have at least 2 characters')
@@ -22,11 +22,6 @@ const formSchema = yup.object().shape({
       .string()
       .min(2, 'Password must have at least 5 characters')
       .required('Password is required!'),
-
-    termsOfService: yup
-      .boolean()
-      .oneOf ([true], "You must accept Terms Of Service")
-
       })
 
-export default formSchema;
+export default formSchemaLogin;

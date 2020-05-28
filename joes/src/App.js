@@ -29,12 +29,7 @@ const initialFormErrors = {
   termsOfService:''
 }
 
-
-
 const initialFormDisabled = true;
-
-
-
 
 
 
@@ -82,16 +77,12 @@ function App() {
   }, [])
 
 
-
-
-
   useEffect(() => {
     formSchema.isValid(formValues)
       .then(valid => { 
         setFormDisabled(!valid)
       })
   }, [formValues])
-
 
 
   const onSubmit = evt => {
@@ -161,81 +152,80 @@ function App() {
 
         <ul>
           <li>
-        <NavLink to='/' exact>Home</NavLink>
-        </li>
-        <li>
-        <NavLink to='/signup'>Sign Up</NavLink>
-        </li>
-        <li>
-        <NavLink to='/login'>Log In</NavLink>
-        </li>
-        <li>
-        <NavLink to='/businesslogin'> Business Log In</NavLink>
-        </li>
-        <li>
-        <NavLink to='businesssignup'>Business Sign Up</NavLink>
-        </li>
-        </ul>
+          <NavLink to='/' exact>Home</NavLink>
+          </li>
+          <li>
+          <NavLink to='/signup'>Sign Up</NavLink>
+          </li>
+          <li>
+          <NavLink to='/login'>Log In</NavLink>
+          </li>
+          <li>
+          <NavLink to='/businesslogin'> Business Log In</NavLink>
+          </li>
+          <li>
+          <NavLink to='businesssignup'>Business Sign Up</NavLink>
+          </li>
+          </ul>
 
         <Switch>
+          <Route path="/signup">
+            <SignUp
+              values = {formValues}
+              onInputChange = {onInputChange}
+              onCheckBoxChange = {onCheckBoxChange}
+              onSubmit = {onSubmit}
+              disabled = {formDisabled}
+              errors ={formErrors}
+            />
+          </Route>
 
-        <Route path="/signup">
-          <SignUp
-            values = {formValues}
-            onInputChange = {onInputChange}
-            onCheckBoxChange = {onCheckBoxChange}
-            onSubmit = {onSubmit}
-            disabled = {formDisabled}
-            errors ={formErrors}
-          />
-        </Route>
 
+          <Route path='/login'>
+            <Login 
+              // values = {formValues}
+              
+              
+              // onSubmit = {onSubmit}
+              // disabled = {formDisabled}
+              // errors ={formErrors}
+            />
+          </Route>
 
-      <Route path='/login'>
-        <Login 
-          values = {formValues}
-          onInputChange = {onInputChange}
-          onCheckBoxChange = {onCheckBoxChange}
-          onSubmit = {onSubmit}
-          disabled = {formDisabled}
-          errors ={formErrors}
-        />
-      </Route>
+          <Route path='/businesslogin'>
+            <BusinessLogin 
+              values = {formValues}
+              onInputChange = {onInputChange}
+              onCheckBoxChange = {onCheckBoxChange}
+              onSubmit = {onSubmit}
+              disabled = {formDisabled}
+              errors ={formErrors}
+            />
+          </Route>
 
-      <Route path='/businesslogin'>
-        <BusinessLogin 
-          values = {formValues}
-          onInputChange = {onInputChange}
-          onCheckBoxChange = {onCheckBoxChange}
-          onSubmit = {onSubmit}
-          disabled = {formDisabled}
-          errors ={formErrors}
-        />
-      </Route>
+          <Route path='/businesssignup'>
+            <BusinessSignUp 
+              values = {formValues}
+              onInputChange = {onInputChange}
+              onCheckBoxChange = {onCheckBoxChange}
+              onSubmit = {onSubmit}
+              disabled = {formDisabled}
+              errors ={formErrors}
+            />
+          </Route>
 
-      <Route path='/businesssignup'>
-        <BusinessSignUp 
-          values = {formValues}
-          onInputChange = {onInputChange}
-          onCheckBoxChange = {onCheckBoxChange}
-          onSubmit = {onSubmit}
-          disabled = {formDisabled}
-          errors ={formErrors}
-        />
-      </Route>
-
-      <Route exact path='/' component={Home} />
-      </Switch>
+          <Route exact path='/' component={Home} />
+        </Switch>
       
-    {
-        user.map((aUser) => {
+        {
+          user.map((aUser) => {
           return (
-            <Card key={aUser.id} details={aUser} />
+          <Card key={aUser.id} details={aUser} />
           )
         })
       }
    
-      </div>
+    </div>
   );
 }
 
