@@ -11,6 +11,13 @@ import BusinessSignUp from './BusinessSignUp';
 import formSchema from './FormSchema';
 import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom';
 
+let myNavs = document.querySelectorAll("nav-link");
+for(let i=0; i<myNavs.length; i++)
+{myNavs[i].addEventListener("mouseover", function(){
+myNavs[i].style.color = "red";
+})}
+
+
 const url= 'https://african-market-place.herokuapp.com/api/users'
 
 const initialFormValues = {
@@ -154,7 +161,7 @@ function App() {
 
         <ul>
           <li>
-          <NavLink to='/' exact>Home</NavLink>
+          <NavLink className='nav-link' to='/' exact>Home</NavLink>
           </li>
           <li>
           <NavLink to='/signup'>Sign Up</NavLink>

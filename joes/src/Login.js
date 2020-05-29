@@ -135,9 +135,14 @@ function Login(props){
         
           const toJSONuser= JSON.parse(userObjToString);
           }
+
+          const resetAll = () => {
+            setLoginFormValues(initialLoginFormValues)
+        }
+
     return(
         <div>
-            <form>
+            <form className='container'>
 
                 <div>
                     <h2>Log In</h2>
@@ -193,7 +198,8 @@ function Login(props){
                 </div>
    
                 <div>
-                    <button className='submit' onClick={onSubmit} disabled={loginFormDisabled}>Submit</button>
+                    <button className='myBtn' onClick={onSubmit} disabled={loginFormDisabled}>Submit</button>
+                    <button onClick={resetAll}>Reset Form</button>
                 </div>
             </form>
         </div>

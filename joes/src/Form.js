@@ -2,8 +2,26 @@ import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import * as yup from 'yup';
 import formSchema from './FormSchema';
+import styled from 'styled-components';
 
 
+const initialFormValues = {
+    name:'',
+    email: '',
+    username:'',
+    password: '',
+    termsOfService: false
+  }
+  
+  const initialFormErrors = {
+    name:'',
+    email:'',
+    username:'',
+    password:'',
+    termsOfService:''
+  }
+  
+  const initialFormDisabled = true;
 
 function SignUp(props){ 
     
@@ -16,10 +34,19 @@ function SignUp(props){
       onCheckBoxChange
     } = props
     
-      
+    const [user, setUser] = useState([])
+  const [formValues, setFormValues] = useState(initialFormValues)
+  const [formErrors, setFormErrors] = useState(initialFormErrors)
+  const [formDisabled, setFormDisabled] = useState(initialFormDisabled)
+
+    const resetAll = () => {
+        setFormValues(initialFormValues)
+    }  
+
+
     return(
         <div>
-            <form>
+            <form className='container'>
                     
             
                     <div>
@@ -102,7 +129,8 @@ function SignUp(props){
         
 
                 <div>
-                    <button onClick={onSubmit} disabled={disabled}>Submit</button>
+                    <button className='myBtn' onClick={onSubmit} disabled={disabled}>Submit</button>
+                    <button onClick={resetAll}>Reset Form</button>
                 </div>
             </form>
 

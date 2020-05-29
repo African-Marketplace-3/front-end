@@ -26,6 +26,11 @@ const initialBizLoginFormValues = {
 
   const initialBizLoginFormDisabled = true;
 
+
+
+
+  
+
 function BusinessLogin(props){
     // const {
     //     values,
@@ -112,7 +117,9 @@ function BusinessLogin(props){
               })
           }, [bizLoginFormValues])
 
+        
 
+       
           const onSubmit = evt => {
             evt.preventDefault()
         
@@ -135,9 +142,15 @@ function BusinessLogin(props){
         
           const toJSONuser= JSON.parse(userObjToString);
           }
+
+
+        const resetAll = () => {
+            setBizLoginFormValues(initialBizLoginFormValues)
+        }
+
     return(
         <div>
-            <form>
+            <form className='container'>
 
                 <div>
                     <h2>Log In</h2>
@@ -154,7 +167,7 @@ function BusinessLogin(props){
 
 
                 <div>
-                    <label htmlFor='email'>Email:&nbsp;
+                    <label htmlFor='email'>Business Email:&nbsp;
                         <input
                             id='email'
                             bizLoginFormValues = {bizLoginFormValues.email}
@@ -193,7 +206,8 @@ function BusinessLogin(props){
                 </div>
    
                 <div>
-                    <button className='submit' onClick={onSubmit} disabled={bizLoginFormDisabled}>Submit</button>
+                    <button className='myBtn' onClick={onSubmit} disabled={bizLoginFormDisabled}>Submit</button>
+                    <button onClick={resetAll}>Reset Form</button>
                 </div>
             </form>
         </div>
