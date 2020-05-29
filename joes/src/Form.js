@@ -23,6 +23,8 @@ const initialFormValues = {
   
   const initialFormDisabled = true;
 
+
+
 function SignUp(props){ 
     
     const {
@@ -35,9 +37,9 @@ function SignUp(props){
     } = props
     
     const [user, setUser] = useState([])
-  const [formValues, setFormValues] = useState(initialFormValues)
-  const [formErrors, setFormErrors] = useState(initialFormErrors)
-  const [formDisabled, setFormDisabled] = useState(initialFormDisabled)
+    const [formValues, setFormValues] = useState(initialFormValues)
+    const [formErrors, setFormErrors] = useState(initialFormErrors)
+    const [formDisabled, setFormDisabled] = useState(initialFormDisabled)
 
     const resetAll = () => {
         setFormValues(initialFormValues)
@@ -46,12 +48,13 @@ function SignUp(props){
 
     return(
         <div>
+             <div>
+                        <h2>Sign Up!</h2>
+                    </div>
             <form className='container'>
                     
             
-                    <div>
-                        <h2>Sign Up!</h2>
-                    </div>
+                   
                                 
                     <div>
                         {errors.name}

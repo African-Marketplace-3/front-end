@@ -11,11 +11,6 @@ import BusinessSignUp from './BusinessSignUp';
 import formSchema from './FormSchema';
 import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom';
 
-let myNavs = document.querySelectorAll("nav-link");
-for(let i=0; i<myNavs.length; i++)
-{myNavs[i].addEventListener("mouseover", function(){
-myNavs[i].style.color = "red";
-})}
 
 
 const url= 'https://african-market-place.herokuapp.com/api/users'
@@ -157,26 +152,27 @@ function App() {
     return (
       <div>
       
-        <h1>African Marketplace</h1>
-
-        <ul>
-          <li>
+        
+        <nav className='navs'>
+          <nav className='home'>
           <NavLink className='nav-link' to='/' exact>Home</NavLink>
-          </li>
-          <li>
-          <NavLink to='/signup'>Sign Up</NavLink>
-          </li>
-          <li>
-          <NavLink to='/login'>Log In</NavLink>
-          </li>
-          <li>
-          <NavLink to='/businesslogin'> Business Log In</NavLink>
-          </li>
-          <li>
-          <NavLink to='businesssignup'>Business Sign Up</NavLink>
-          </li>
-          </ul>
+          </nav>
+          <nav>
+          <NavLink className='nav-link' to='/signup'>Sign Up</NavLink>
+          </nav>
+          <nav>
+          <NavLink className='nav-link' to='/login'>Log In</NavLink>
+          </nav>
+          <nav>
+          <NavLink className='nav-link' to='/businesslogin'> Business Log In</NavLink>
+          </nav>
+          <nav>
+          <NavLink className='nav-link' to='businesssignup'>Business Sign Up</NavLink>
+          </nav>
+          </nav>
 
+          <h1 style={{backgroundColor: "orange"}}>African Marketplace</h1>
+        
         <Switch>
           <Route path="/signup">
             <SignUp

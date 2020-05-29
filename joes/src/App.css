@@ -40,11 +40,64 @@
   border: 1px solid rgb(200, 200, 200);
   box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
   border-radius: 8px;
-  margin: 0% 60% 0% 1%;
-  padding: 1%;
+  margin: 0% 20%;
+  padding: 2% 19%;
+  background-color: white;
+  display:flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+
+
+button {
+  
+    cursor: pointer;
+    border:2px solid limegreen;
+    padding:2%;
+    margin: 5% 10%;
+    border-radius: 5px;
+    background-color: orange;
+    
+}
+
+button:hover{
   background-color: white;
 }
 
-.myBtn {
-border: 3px solid blue;
+button:disabled{
+  border: 2px solid red;
 }
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+.navs {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  background-color:#202020;
+  padding:1%;
+  
+}
+
+.nav-link{
+  color:white;
+ 
+}
+

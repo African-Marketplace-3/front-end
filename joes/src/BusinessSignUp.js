@@ -35,9 +35,9 @@ function BusinessSignUp(props){
 
 
     const [user, setUser] = useState([])
-  const [formValues, setFormValues] = useState(initialFormValues)
-  const [formErrors, setFormErrors] = useState(initialFormErrors)
-  const [formDisabled, setFormDisabled] = useState(initialFormDisabled)
+    const [formValues, setFormValues] = useState(initialFormValues)
+    const [formErrors, setFormErrors] = useState(initialFormErrors)
+    const [formDisabled, setFormDisabled] = useState(initialFormDisabled)
 
     const resetAll = () => {
         setFormValues(initialFormValues)
@@ -45,10 +45,11 @@ function BusinessSignUp(props){
    
     return(
         <div>
-            <form className='container'>
-                <div>
+             <div>
                     <h2>Sign Up Your Business!</h2>
                 </div>
+            <form className='container'>
+               
 
                 <div>
                     {errors.name}

@@ -150,11 +150,12 @@ function BusinessLogin(props){
 
     return(
         <div>
+            <div>
+                    <h2>Business Log In</h2>
+                </div>
             <form className='container'>
 
-                <div>
-                    <h2>Log In</h2>
-                </div>
+                
 
                 <div>
                     
