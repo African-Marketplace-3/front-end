@@ -8,9 +8,12 @@ import Login from './Login';
 import Card from './UserCard';
 import BusinessLogin from './BusinessLogin';
 import BusinessSignUp from './BusinessSignUp';
+import formSchema from './FormSchema';
 import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom';
 
-const url= 'https://reqres.in/api/users'
+
+
+const url= 'https://african-market-place.herokuapp.com/api/users'
 
 const initialFormValues = {
   name:'',
@@ -28,32 +31,8 @@ const initialFormErrors = {
   termsOfService:''
 }
 
-const formSchema = yup.object().shape({
-  name: yup
-    .string()
-    .min(2, 'Name must have at least 2 characters')
-    .required('Name is required!'),
-  
-  email: yup
-    .string()
-    .min(2, 'Email must have at least 7 characters')
-    .required('Email is required!'),
-
-  username: yup
-    .string()
-    .min(6, 'Username must have at least 6 characters')
-    .required('Username is required!'),
-
-  password: yup
-    .string()
-    .min(2, 'Password must have at least 5 characters')
-    .required('Password is required!'),
-
-  
-
-    })
-
 const initialFormDisabled = true;
+
 
 
 function App() {
@@ -62,6 +41,24 @@ function App() {
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
   const [formDisabled, setFormDisabled] = useState(initialFormDisabled)
+
+
+  const getUser = () => {
+    axios.get(url)
+    .then(function(res) {
+      console.log(res);
+      setUser([...user, res.data])
+    })
+    .catch(function(err) {
+      console.log(err)
+    })
+  }
+
+  useEffect(() =>{
+    getUser()
+    }, [])
+
+
 
   const postUser = aUser => {
     axios.post(url, aUser)
@@ -81,6 +78,7 @@ function App() {
   postUser()
   }, [])
 
+
   useEffect(() => {
     formSchema.isValid(formValues)
       .then(valid => { 
@@ -92,9 +90,11 @@ function App() {
   const onSubmit = evt => {
     evt.preventDefault()
 
+    console.log('Your form was successfully submitted!')
+
   const newUser = {
-    name: formValues.name,
-    email: formValues.email,
+    name: formValues.name.trim(),
+    email: formValues.email.trim(),
     username: formValues.username,
     password: formValues.password,
     termsOfService: Object.keys(formValues.termsOfService)
@@ -132,7 +132,7 @@ function App() {
       })
       setFormValues({
         ...formValues,
-        [name]:value,
+        [name]:value
       })
     }
 
@@ -152,85 +152,83 @@ function App() {
     return (
       <div>
       
-        <h1>African Marketplace</h1>
+        
+        <nav className='navs'>
+          <nav>
+          <NavLink className='nav-link' to='/' exact>Home</NavLink>
+          </nav>
+          <nav>
+          <NavLink className='nav-link' to='/signup'>Sign Up</NavLink>
+          </nav>
+          <nav>
+          <NavLink className='nav-link' to='/login'>Log In</NavLink>
+          </nav>
+          <nav>
+          <NavLink className='nav-link' to='/businesslogin'> Business Log In</NavLink>
+          </nav>
+          <nav>
+          <NavLink className='nav-link' to='businesssignup'>Business Sign Up</NavLink>
+          </nav>
+          </nav>
 
-        <ul>
-          <li>
-        <NavLink to='/' exact>Home</NavLink>
-        </li>
-        <li>
-        <NavLink to='/signup'>Sign Up</NavLink>
-        </li>
-        <li>
-        <NavLink to='/login'>Log In</NavLink>
-        </li>
-        <li>
-        <NavLink to='/businesslogin'> Business Log In</NavLink>
-        </li>
-        <li>
-        <NavLink to='businesssignup'>Business Sign Up</NavLink>
-        </li>
-        </ul>
-
+          <h1 style={{backgroundColor: "orange"}}>African Marketplace</h1>
+        
         <Switch>
+          <Route path="/signup">
+            <SignUp
+              values = {formValues}
+              onInputChange = {onInputChange}
+              onCheckBoxChange = {onCheckBoxChange}
+              onSubmit = {onSubmit}
+              disabled = {formDisabled}
+              errors ={formErrors}
+            />
+          </Route>
 
-        <Route path="/signup">
-          <SignUp
-            values = {formValues}
-            onInputChange = {onInputChange}
-            onCheckBoxChange = {onCheckBoxChange}
-            onSubmit = {onSubmit}
-            disabled = {formDisabled}
-            errors ={formErrors}
-          />
-        </Route>
 
+          <Route path='/login'>
+            <Login 
+              // values = {formValues}
+              // onSubmit = {onSubmit}
+              // disabled = {formDisabled}
+              // errors ={formErrors}
+            />
+          </Route>
 
-      <Route path='/login'>
-        <Login 
-          values = {formValues}
-          onInputChange = {onInputChange}
-          onCheckBoxChange = {onCheckBoxChange}
-          onSubmit = {onSubmit}
-          disabled = {formDisabled}
-          errors ={formErrors}
-        />
-      </Route>
+          <Route path='/businesslogin'>
+            <BusinessLogin 
+              values = {formValues}
+              onInputChange = {onInputChange}
+              onCheckBoxChange = {onCheckBoxChange}
+              onSubmit = {onSubmit}
+              disabled = {formDisabled}
+              errors ={formErrors}
+            />
+          </Route>
 
-      <Route path='/businesslogin'>
-        <BusinessLogin 
-          values = {formValues}
-          onInputChange = {onInputChange}
-          onCheckBoxChange = {onCheckBoxChange}
-          onSubmit = {onSubmit}
-          disabled = {formDisabled}
-          errors ={formErrors}
-        />
-      </Route>
+          <Route path='/businesssignup'>
+            <BusinessSignUp 
+              values = {formValues}
+              onInputChange = {onInputChange}
+              onCheckBoxChange = {onCheckBoxChange}
+              onSubmit = {onSubmit}
+              disabled = {formDisabled}
+              errors ={formErrors}
+            />
+          </Route>
 
-      <Route path='/businesssignup'>
-        <BusinessSignUp 
-          values = {formValues}
-          onInputChange = {onInputChange}
-          onCheckboxChange = {onCheckBoxChange}
-          onSubmit = {onSubmit}
-          disabled = {formDisabled}
-          errors ={formErrors}
-        />
-      </Route>
-
-      <Route exact path='/' component={Home} />
-      </Switch>
+          <Route exact path='/' component={Home} />
+        </Switch>
       
-    {
-        user.map((aUser) => {
+        {
+          user.map((aUser) => {
           return (
-            <Card key={aUser.id} details={aUser} />
+          <Card key={aUser.id} details={aUser} />
           )
         })
       }
    
-      </div>
+    </div>
   );
 }
 
