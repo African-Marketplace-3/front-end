@@ -18,6 +18,7 @@ function Home(){
             {
                 opacity: 1,
                 y: -20,
+               
                 ease: Power3.easeOut
             }
         )
@@ -35,7 +36,7 @@ function Home(){
 
         <div>
             <img 
-            src='/images/Sauti.png' 
+            src='/images/Sauti-img.png' 
             alt='women reading information provided by sauti' 
             ref={element => {imgItem = element}}
             />

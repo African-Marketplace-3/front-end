@@ -84,6 +84,10 @@ p {
   justify-content: center;
 }
 
+img {
+  margin:1% 25%;
+}
+
 
 
 
@@ -104,6 +108,3 @@ p {
   color:orange;
 }
 
-.top{
-  margin-bottom: 10%;
-}
