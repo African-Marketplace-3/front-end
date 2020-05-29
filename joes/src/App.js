@@ -154,7 +154,7 @@ function App() {
       
         
         <nav className='navs'>
-          <nav className='home'>
+          <nav>
           <NavLink className='nav-link' to='/' exact>Home</NavLink>
           </nav>
           <nav>
