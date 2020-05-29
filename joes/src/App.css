@@ -103,3 +103,7 @@ p {
 .nav-link:hover{
   color:orange;
 }
+
+.top{
+  margin-bottom: 10%;
+}
