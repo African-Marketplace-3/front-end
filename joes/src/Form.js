@@ -56,12 +56,12 @@ function SignUp(props){
             
                    
                                 
-                    <div>
+                    {/* <div>
                         {errors.name}
                         {errors.email}
                         {errors.username}
                         {errors.password}
-                    </div>
+                    </div> */}
 
                     <div>
                         <label htmlFor='name'>Name:&nbsp;
